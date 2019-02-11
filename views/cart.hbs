@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <style media="screen">
+    body{
+      background-color: #EAEDED
+    }
+      .navbar{
+        background-color: #2e3c50;
+      }
+      .navbar .navbar-brand{
+        color: white;
+        font-size: 25px;
+      }
+      .navbar .container .navbar-toggler{
+        color: white
+      }
+      .navbar .collapse .nav-link{
+        color: white;
+        font-size: 20px;
+      }
+      .content{
+        /* background-color: white; */
+        padding: 1%;
+      }
+      #price{
+        color: green;
+        font-size: 23px;
+      }
+    </style>
+  </head>
+  <body>
+
+      <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container">
+        <a class="navbar-brand" href="/">ShopKart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link ml-3" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3 " href="/cart">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3" href="/manage/books">Manage</a>
+            </li>
+            </ul>
+          <div class="">
+            <ul class="navbar-nav mr-auto ">
+              <li class="nav-item">
+                <a class="nav-link " href="#"><i class="fas fa-user-plus fa-xs"></i>  Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ml-3" href="#"><i class="fas fa-user fa-xs"></i> Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    </nav>
+
+    {{#if cart.items}}
+    <div class="container mt-5">
+      <h1>Shopping Cart <span><a href="#">Empty Cart</a> </span> </h1>
+      <table>
+        <thead>
+          <tr>
+            <th width="400px">Item</th>
+            <th width="100px">Qty</th>
+            <th width="100px">Price</th>
+            <th width="100px">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each cart.items}}
+          <tr>
+            <td>{{this.title}}</td>
+            <td>{{this.qty}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.totall}}</td>
+          </tr>
+
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+    <p>No Item in your cart</p>
+    {{/if}}
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-6">
+          <h3>Grand Total : Rs {{cart.total}}</h3>
+        </div>
+        <div class="col-6 mr-5 mt-2">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="accounts@freelanceswitch.com">
+          <input type="hidden" name="item_name" value="Donation">
+          <input type="hidden" name="item_number" value="1">
+          <input type="hidden" name="amount" value="{{cart.total}}">
+          <input type="hidden" name="no_shipping" value="0">
+          <input type="hidden" name="no_note" value="1">
+          <input type="hidden" name="currency_code" value="INR">
+          <input type="hidden" name="lc" value="AU">
+          <input type="hidden" name="bn" value="PP-BuyNowBF">
+          <input type="image" src="https://www.paypal.com/en_AU/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+          <img alt="" border="0" src="https://www.paypal.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>

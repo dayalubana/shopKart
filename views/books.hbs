@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <style media="screen">
+    body{
+      background-color: #EAEDED
+    }
+      .navbar{
+        background-color: #2e3c50;
+      }
+      .navbar .navbar-brand{
+        color: white;
+        font-size: 25px;
+      }
+      .navbar .container .navbar-toggler{
+        color: white
+      }
+      .navbar .collapse .nav-link{
+        color: white;
+        font-size: 20px;
+      }
+      .content{
+        background-color: white;
+        padding: 1%;
+      }
+      .table{
+        border: 1px solid black;
+        border-top: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+
+      <nav class="navbar navbar-expand-md navbar-light">
+        <div class="container">
+        <a class="navbar-brand" href="/">ShopKart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link ml-3" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3" href="/manage/books">Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-3" href="/manage/categories">Categories</a>
+            </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <div class="container mt-5 ">
+      <a class="btn btn-primary btn-lg"href="/manage/books/add">Add Book</a>
+    </div>
+
+    <div class="container text-center mt-5">
+
+      <table class="table">
+        <thead>
+          <tr class="">
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each books}}
+          <tr>
+            <td class="mr-5">{{this._id}}</td>
+            <td class="mr-3">{{this.title}}</td>
+            <td class="mr-3">{{this.category}}</td>
+            <td class="mr-3"><a class="btn btn-primary"href="/manage/books/edit/{{this._id}}" name="button">Edit</a> </td>
+            <td>
+              <!-- {{this._id}} -->
+              <form class="" action="/manage/books/delete/{{this._id}}" method="post">
+                <input class="btn btn-danger"type="submit" name="" value="Delete">
+              </form>
+            </td>
+            <!-- <td class="mr-3"><a class="btn btn-danger" name="button1"href="/manage/books/delete/{{this._id}}">Delete</a> </td> -->
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
